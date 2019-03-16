@@ -52,7 +52,10 @@ export class RegisterComponent implements OnInit {
   	if(this.registerForm.invalid){
   		return;
   	}
-  	console.log(this.registerForm.controls)
+
+  	let value = JSON.stringify(this.registerForm.value)
+
+  	alert('sucecss' + value)
   }
 
 }

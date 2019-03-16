@@ -5,7 +5,7 @@
 </style>
 <div class="container">
     <div class="row">
-        <h2>To simple login using angular and node js</h2>
+        <h2>Login form validation using angular7</h2>
         <form class="form-horizontal" [formGroup]="registerForm" (submit)="onRegister()" style="margin-top: 30px">
 
             <div class="form-group">
@@ -14,7 +14,7 @@
                     <input type="text" formControlName="firstname" class="form-control" placeholder="Enter firstname">
                 </div>
             </div>
-            <div *ngIf="submitted && validation.firstname.invalid || (validation.firstname.dirty || validation.firstname.touched)" [ngClass]="{ 'is-invalid': submitted || validation.firstname?.errors }" style="width: 83%;
+            <div *ngIf="submitted && validation.firstname.invalid" [ngClass]="{ 'is-invalid': submitted || validation.firstname?.errors }" style="width: 83%;
     margin-left: 198px;">
                 <div *ngIf="validation.firstname.errors">
                     Firstname is required
@@ -27,7 +27,7 @@
                     <input type="text" formControlName="lastname" class="form-control" placeholder="Enter lastname">
                 </div>
             </div>
-            <div *ngIf="submitted && validation.lastname.invalid || (validation.lastname.dirty || validation.lastname.touched)" [ngClass]="{ 'is-invalid': submitted || validation.lastname?.errors }" style="width: 83%;
+            <div *ngIf="submitted && validation.lastname.invalid" [ngClass]="{ 'is-invalid': submitted || validation.lastname?.errors }" style="width: 83%;
     margin-left: 198px;">
                 <div *ngIf="validation.lastname.errors">
                     Lastname is required
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <div *ngIf="submitted && validation.username.invalid || (validation.username.dirty || validation.username.touched)" [ngClass]="{ 'is-invalid': submitted || validation.username?.errors }" style="width: 83%;
+            <div *ngIf="submitted && validation.username.invalid" [ngClass]="{ 'is-invalid': submitted || validation.username?.errors }" style="width: 83%;
     margin-left: 198px;">
                 <div *ngIf="validation.username.errors?.required">
                     Username is required.
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div *ngIf="submitted && validation.email.invalid || (validation.email.dirty || validation.email.touched)" [ngClass]="{ 'is-invalid': submitted || validation.email.errors }" style="width: 83%;
+            <div *ngIf="submitted && validation.email.invalid" [ngClass]="{ 'is-invalid': submitted || validation.email.errors }" style="width: 83%;
     margin-left: 198px;">
                 <div *ngIf="validation.email.errors?.required">
                     Email is required
@@ -75,7 +75,7 @@
                 </div>
             </div>
 
-            <div *ngIf="submitted && validation.password.invalid || (validation.password.dirty || validation.password.touched)" [ngClass]="{ 'is-invalid': submitted || validation.password?.errors }" style="width: 83%;
+            <div *ngIf="submitted && validation.password.invalid" [ngClass]="{ 'is-invalid': submitted || validation.password?.errors }" style="width: 83%;
     margin-left: 198px;">
                 <div *ngIf="validation.password.errors?.required">
                     Password is required
@@ -92,7 +92,7 @@
                 </div>
             </div>
 
-            <div *ngIf="submitted && validation.cpassword.invalid || (validation.cpassword.dirty || validation.cpassword.touched)" [ngClass]="{ 'is-invalid': submitted || validation.cpassword?.errors }" style="width: 83%;
+            <div *ngIf="submitted && validation.cpassword.invalid" [ngClass]="{ 'is-invalid': submitted || validation.cpassword?.errors }" style="width: 83%;
     margin-left: 198px;">
                 <div *ngIf="validation.cpassword.errors?.required">
                     Confirm password is required
@@ -105,6 +105,10 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">Submit</button>
+                    <br /><br />
+                 <div class="already_member">
+                	Already a member?<a routerLink="/login">Login</a>
+                </div>
                 </div>
             </div>
         </form>
