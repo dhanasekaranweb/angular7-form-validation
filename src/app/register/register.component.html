@@ -1,62 +1,112 @@
 <style type="text/css">
-  .exists{
-    color:red;
-  }
+    .exists {
+        color: red;
+    }
 </style>
 <div class="container">
-  <div class="row">
-    <h2>To simple login using angular and node js</h2>
-    <form class="form-horizontal" [formGroup]="registerForm" (submit)="onRegister()" style="margin-top: 30px">
+    <div class="row">
+        <h2>To simple login using angular and node js</h2>
+        <form class="form-horizontal" [formGroup]="registerForm" (submit)="onRegister()" style="margin-top: 30px">
 
-    	<div class="form-group">
-          <label class="control-label col-sm-2" for="firstname">Firstname:</label>
-          <div class="col-sm-10">
-            <input type="text" formControlName="firstname" class="form-control" placeholder="Enter firstname">
-          </div>
-        </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="firstname">Firstname:</label>
+                <div class="col-sm-10">
+                    <input type="text" formControlName="firstname" class="form-control" placeholder="Enter firstname">
+                </div>
+            </div>
+            <div *ngIf="submitted && validation.firstname.invalid || (validation.firstname.dirty || validation.firstname.touched)" [ngClass]="{ 'is-invalid': submitted || validation.firstname?.errors }" style="width: 83%;
+    margin-left: 198px;">
+                <div *ngIf="validation.firstname.errors">
+                    Firstname is required
+                </div>
+            </div>
 
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="lastname">Lastname:</label>
-          <div class="col-sm-10">
-            <input type="text" formControlName="lastname" class="form-control" placeholder="Enter lastname">
-          </div>
-        </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="lastname">Lastname:</label>
+                <div class="col-sm-10">
+                    <input type="text" formControlName="lastname" class="form-control" placeholder="Enter lastname">
+                </div>
+            </div>
+            <div *ngIf="submitted && validation.lastname.invalid || (validation.lastname.dirty || validation.lastname.touched)" [ngClass]="{ 'is-invalid': submitted || validation.lastname?.errors }" style="width: 83%;
+    margin-left: 198px;">
+                <div *ngIf="validation.lastname.errors">
+                    Lastname is required
+                </div>
+            </div>
 
-      	<div class="form-group">
-          <label class="control-label col-sm-2" for="susername">Username:</label>
-          <div class="col-sm-10">
-            <input type="text" formControlName="username" class="form-control" placeholder="Enter username">
-          </div>
-          <div *ngIf="validation.username.errors.required">
-    Name is required.
-  </div>
-  <div *ngIf="validation.username.errors.minlength">
-    min 6 is required.
-  </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="semail">Email:</label>
-          <div class="col-sm-10">
-            <input type="email" formControlName="email" class="form-control" placeholder="Enter email">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="phonenumber">Phone Number:</label>
-          <div class="col-sm-10">
-            <input type="number" formControlName="phonenumber" class="form-control" placeholder="Enter phonenumber">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="spassword">Password:</label>
-          <div class="col-sm-10">          
-            <input type="password" formControlName="password" class="form-control" placeholder="Enter password">
-          </div>
-        </div>
-        <div class="form-group">        
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Submit</button>
-          </div>
-        </div>
-      </form>
-  </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="susername">Username:</label>
+                <div class="col-sm-10">
+                    <input type="text" formControlName="username" class="form-control" placeholder="Enter username">
+                </div>
+            </div>
+
+            <div *ngIf="submitted && validation.username.invalid || (validation.username.dirty || validation.username.touched)" [ngClass]="{ 'is-invalid': submitted || validation.username?.errors }" style="width: 83%;
+    margin-left: 198px;">
+                <div *ngIf="validation.username.errors?.required">
+                    Username is required.
+                </div>
+                <div *ngIf="validation.username.errors?.minlength">
+                    Username must be atleast 6 characters
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="semail">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" formControlName="email" class="form-control" placeholder="Enter email">
+                </div>
+            </div>
+
+            <div *ngIf="submitted && validation.email.invalid || (validation.email.dirty || validation.email.touched)" [ngClass]="{ 'is-invalid': submitted || validation.email.errors }" style="width: 83%;
+    margin-left: 198px;">
+                <div *ngIf="validation.email.errors?.required">
+                    Email is required
+                </div>
+                <div *ngIf="validation.email.errors?.email">
+                    Email must be valid a valid email address
+                </div>
+            </div>	
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="spassword">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Enter password">
+                </div>
+            </div>
+
+            <div *ngIf="submitted && validation.password.invalid || (validation.password.dirty || validation.password.touched)" [ngClass]="{ 'is-invalid': submitted || validation.password?.errors }" style="width: 83%;
+    margin-left: 198px;">
+                <div *ngIf="validation.password.errors?.required">
+                    Password is required
+                </div>
+                <div *ngIf="validation.password.errors?.minlength">
+                    Password must be atleast 8 characters
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cpassword">Confirm Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" formControlName="cpassword" class="form-control" placeholder="Enter confirm password">
+                </div>
+            </div>
+
+            <div *ngIf="submitted && validation.cpassword.invalid || (validation.cpassword.dirty || validation.cpassword.touched)" [ngClass]="{ 'is-invalid': submitted || validation.cpassword?.errors }" style="width: 83%;
+    margin-left: 198px;">
+                <div *ngIf="validation.cpassword.errors?.required">
+                    Confirm password is required
+                </div>
+                <div *ngIf="validation.cpassword.errors?.mustMatch">
+                    Passwords must match
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
